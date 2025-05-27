@@ -36,7 +36,7 @@ chmod +x webhook.py
 
 2 - Tải file cài & thêm quyền thực thi khi dùng với discord webhook:
 ```
-wget https://raw.githubusercontent.com/huydv398/checkmk-webhook-notify/refs/heads/main/webhook.py
-chmod +x webhook.py
+wget https://raw.githubusercontent.com/huydv398/checkmk-webhook-notify/refs/heads/main/discord-webhook.py
+chmod +x discord-webhook.py
 ```
 Kiểm tra lại `Add notification rule` => `Notification Method`.
