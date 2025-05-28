@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Microsoft Teams Webhook Notify (from CheckMK)
+# Teams-Webhook-modify
 
 import os
 import sys
