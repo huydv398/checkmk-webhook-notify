@@ -40,3 +40,11 @@ wget https://raw.githubusercontent.com/huydv398/checkmk-webhook-notify/refs/head
 chmod +x discord-webhook.py
 ```
 Kiểm tra lại `Add notification rule` => `Notification Method`.
+
+3 - Tải file cài & thêm quyền thực thi khi dùng với TEAMS webhook:
+```
+wget https://raw.githubusercontent.com/huydv398/checkmk-webhook-notify/refs/heads/main/teams-webhook.py
+chmod +x teams-webhook.py
+```
+Kiểm tra lại `Add notification rule` => `Notification Method`.
+
