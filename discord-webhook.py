@@ -33,7 +33,7 @@ def GetNotificationDetails():
     output_host = env.get("NOTIFY_HOSTOUTPUT", "No Output")
     long_output_host = env.get("NOTIFY_LONGHOSTOUTPUT", "")
     host_state = env.get("NOTIFY_HOSTSTATE", "UNKNOWN")
-    last_host_state = env.get("NOTIFY_LASTHOSTSHORTSTATE", "UNKNOWN")
+    last_host_state = env.get("NOTIFY_PREVIOUSHOSTHARDSTATE", "UNKNOWN")
     
     if what == "SERVICE":
         event = f"{last_state} -> {state}"
@@ -48,7 +48,7 @@ def GetNotificationDetails():
             fields.append({"name": "PerfData", "value": perf_data, "inline": False})
         color = 16711680 if state == "CRITICAL" else 16776960 if state == "WARNING" else 65280
     else:
-        event = f"{host_state} -> {last_host_state}"
+        event = f"{last_host_state} → {host_state}"
         title = f"🔔 CheckMK Host Alert: {hostname}"
         fields = [
             {"name": "Host", "value": hostname, "inline": True},
