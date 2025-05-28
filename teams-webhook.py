@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Teams-Webhook-modify
+# Webhook-Notify-Modify
 
 import os
 import sys
@@ -29,22 +29,24 @@ def GetNotificationDetails():
     STATE = env_vars.get("NOTIFY_SERVICESTATE", "")
     LAST_STATE = env_vars.get("NOTIFY_PREVIOUSSERVICEHARDSTATE", "")
     HOST_STATE = env_vars.get("NOTIFY_HOSTSTATE", "")
-    LAST_HOST_STATE = env_vars.get("NOTIFY_LASTHOSTSHORTSTATE", "")
+    LAST_HOST_STATE = env_vars.get("NOTIFY_PREVIOUSHOSTHARDSTATE", "")
     WHAT = env_vars.get("NOTIFY_WHAT", "SERVICE")
 
     if WHAT == "SERVICE":
-        summary = f"CheckMK {HOSTNAME}/{SERVICE} - {LAST_STATE} -> {STATE}"
+        summary = f"{STATE} - {HOSTNAME}/{SERVICE}"
         text = f"**Host**: {HOSTNAME}  \n" \
                f"**Service**: {SERVICE}  \n" \
+               f"**IP**: {ADDRESS}  \n" \
                f"**Event**: {LAST_STATE} → {STATE}  \n" \
                f"**Output**: {OUTPUT_SERVICE or 'N/A'}"
-        if PERF_DATA:
-            text += f"\n**PerfData**: {PERF_DATA}"
+        # if PERF_DATA:
+        #     text += f"\n**PerfData**: {PERF_DATA}"
         color = "FF0000" if STATE == "CRITICAL" else "FFA500" if STATE == "WARNING" else "00FF00"
     else:
-        summary = f"CheckMK {HOSTNAME} - {HOST_STATE} -> {LAST_HOST_STATE}"
+        summary = f"{HOST_STATE} - {HOSTNAME}"
         text = f"**Host**: {HOSTNAME}  \n" \
-               f"**Event**: {HOST_STATE} → {LAST_HOST_STATE}  \n" \
+               f"**IP**: {ADDRESS}  \n" \
+               f"**Event**: {LAST_HOST_STATE} → {HOST_STATE}  \n" \
                f"**Output**: {OUTPUT_HOST or 'N/A'}"
         color = "FF0000" if HOST_STATE == "DOWN" else "00FF00"
 
