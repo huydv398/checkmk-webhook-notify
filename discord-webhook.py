@@ -44,8 +44,6 @@ def GetNotificationDetails():
             {"name": "Event", "value": event, "inline": False},
             {"name": "Output", "value": output_service or "No Output", "inline": False},
         ]
-        if perf_data:
-            fields.append({"name": "PerfData", "value": perf_data, "inline": False})
         color = 16711680 if state == "CRITICAL" else 16776960 if state == "WARNING" else 65280
     else:
         event = f"{last_host_state} → {host_state}"
